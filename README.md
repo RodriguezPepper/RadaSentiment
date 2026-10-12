@@ -13,6 +13,8 @@ Tomé las letras que escribió entre 1965 y 2025 y las comparé con las de otros
 - El arco de Rada me pareció lo más lindo de todo. El de los 70 escribía oscuro (valencia mediana de −0,21) y el de los 2010 escribe luminoso (+0,32). El cambio llega con su regreso en los 90.
 - Un detalle que me hizo repensar las conclusiones: si comparo a Rada y Zitarrosa solo en las décadas en que los dos grabaron, la mitad de la diferencia desaparece. Parte de lo que parecía ser "el artista" era en realidad "la época".
 
+![Alegría contra tristeza](informe/linkedin/04_amplitud.png)
+
 ![Rada a lo largo del tiempo](informe/linkedin/02_arco.png)
 
 El informe completo, con todas las figuras, está en [informe/informe.html](informe/informe.html), y las tablas estadísticas en [results/estadistica.md](results/estadistica.md).
@@ -47,14 +49,14 @@ El token de Genius es gratis y se saca en https://genius.com/api-clients.
 
 ## Qué hay en cada carpeta
 
-- `config/artistas.yaml`: los artistas, sus IDs en Genius y MusicBrainz, y las épocas de Rada
-- `src/adquisicion/`: catálogo y descarga de letras
-- `src/limpieza/`: consolidación, autoría y exclusiones
-- `src/analisis/`: clasificación de sentimiento y capa léxica
-- `src/estadistica/`: tests y comparaciones
-- `src/viz/`: figuras e informe
-- `data/catalogo/`: el canon discográfico y los créditos de cada canción
-- `results/` e `informe/`: tablas, figuras e informe final
+- `config/artistas.yaml`: Los artistas, sus IDs en Genius y MusicBrainz, y las épocas de Rada
+- `src/adquisicion/`: Catálogo y descarga de letras
+- `src/limpieza/`: Consolidación, autoría y exclusiones
+- `src/analisis/`: Clasificación de sentimiento y capa léxica
+- `src/estadistica/`: Tests y comparaciones
+- `src/viz/`: Figuras e informe
+- `data/catalogo/`: El canon discográfico y los créditos de cada canción
+- `results/` e `informe/`: Tablas, figuras e informe final
 
 ---
 

@@ -6,8 +6,9 @@ gris, para que en las tres se lea la misma historia.
   01_tono.png     distribución del tono por canción, artista por artista
   02_arco.png     tono mediano de Rada por década contra el resto
   03_alegria.png  proporción de estrofas cuya emoción dominante es alegría
+  04_amplitud.png alegría contra tristeza: la amplitud emocional de Rada
 
-Salida: informe/linkedin/0{1,2,3}_*.png
+Salida: informe/linkedin/0{1,2,3,4}_*.png
 Uso:    .venv/bin/python src/viz/linkedin_png.py
 """
 
@@ -92,7 +93,7 @@ def g1_distribucion(d):
         ax.text(1.12, y0, coma(med), ha="left", va="center", fontsize=10.5,
                 color=INK if es_rada else INK2,
                 fontweight="bold" if es_rada else "normal")
-    ax.text(1.12, n - 0.35, "mediana", ha="left", va="bottom", fontsize=8.5, color=MUTED)
+    ax.text(1.12, n - 0.35, "Mediana", ha="left", va="bottom", fontsize=8.5, color=MUTED)
     ax.axvline(0, color=BASE, lw=1, zorder=1)
     ax.set_yticks(range(n))
     ax.set_yticklabels([NOMBRES[f] for f in reversed(ORDEN)], fontsize=11.5)
@@ -102,9 +103,9 @@ def g1_distribucion(d):
     ax.set_ylim(-0.6, n - 0.4)
     ax.set_xticks([-1, -0.5, 0, 0.5, 1])
     ax.set_xticklabels(["−1", "−0,5", "0", "+0,5", "+1"], fontsize=9.5)
-    ax.text(-1.02, -1.25, "← más sombrío", ha="left", va="top", fontsize=9.5, color=INK2,
+    ax.text(-1.02, -1.25, "← Más sombrío", ha="left", va="top", fontsize=9.5, color=INK2,
             transform=ax.transData)
-    ax.text(1.02, -1.25, "más luminoso →", ha="right", va="top", fontsize=9.5, color=INK2,
+    ax.text(1.02, -1.25, "Más luminoso →", ha="right", va="top", fontsize=9.5, color=INK2,
             transform=ax.transData)
     fig.savefig(DEST / "01_tono.png", facecolor=SURFACE)
     plt.close(fig)
@@ -131,8 +132,8 @@ def g2_arco(d):
     ax.scatter(cel.index, cel.values, s=70, color=RADA, edgecolor=SURFACE,
                linewidth=2, zorder=6)
 
-    notas = {1970: ("los 70", (-12, 0)), 1990: ("el regreso", (0, 16)),
-             2010: ("los 2010", (0, 16))}
+    notas = {1970: ("Los 70", (-12, 0)), 1990: ("El regreso", (0, 16)),
+             2010: ("Los 2010", (0, 16))}
     for dec, (txt, off) in notas.items():
         v = cel[dec]
         ax.annotate(f"{txt}\n{coma(v)}", (dec, v), xytext=off, textcoords="offset points",
@@ -198,6 +199,45 @@ def g3_alegria(d):
     plt.close(fig)
 
 
+def g4_amplitud(d):
+    fig, ax = lienzo("Rada festeja como nadie\ny llora como pocos",
+                     "Porcentaje de estrofas dominadas por la alegría y por la\ntristeza, artista por artista.",
+                     [0.15, 0.17, 0.74, 0.53])
+    em = d.groupby("ficha")[["emo_joy", "emo_sadness"]].mean() * 100
+    # Las etiquetas van al costado de cada punto; el desplazamiento evita choques
+    offs = {"ruben_rada": (-12, 0, "right"), "alfredo_zitarrosa": (12, 0, "left"),
+            "eduardo_mateo": (12, 6, "left"), "jaime_roos": (12, -6, "left"),
+            "fernando_cabrera": (-12, 4, "right"), "jorge_drexler": (-12, -4, "right")}
+    for f in ORDEN:
+        x, y = em.loc[f, "emo_joy"], em.loc[f, "emo_sadness"]
+        es_rada = f == "ruben_rada"
+        ax.scatter(x, y, s=260 if es_rada else 150, color=RADA if es_rada else OTROS,
+                   edgecolor=SURFACE, linewidth=2, zorder=4)
+        dx, dy, ha = offs[f]
+        ax.annotate(NOMBRES[f], (x, y), xytext=(dx, dy), textcoords="offset points",
+                    ha=ha, va="center", fontsize=11, color=INK if es_rada else INK2,
+                    fontweight="bold" if es_rada else "normal")
+
+    for v in (5, 10, 15, 20):
+        ax.axvline(v, color=GRID, lw=0.8, zorder=0)
+    for v in (10, 15, 20):
+        ax.axhline(v, color=GRID, lw=0.8, zorder=0)
+    ax.set_xlim(0, 21)
+    ax.set_ylim(7, 24)
+    ax.set_xticks([0, 5, 10, 15, 20])
+    ax.set_xticklabels(["0 %", "5 %", "10 %", "15 %", "20 %"], fontsize=9.5)
+    ax.set_yticks([10, 15, 20])
+    ax.set_yticklabels(["10 %", "15 %", "20 %"], fontsize=9.5, color=MUTED)
+    ax.set_xlabel("Alegría →", fontsize=10.5, color=INK2, loc="right", labelpad=8)
+    ax.set_ylabel("Tristeza →", fontsize=10.5, color=INK2, loc="top", labelpad=8)
+    x, y = em.loc["ruben_rada", "emo_joy"], em.loc["ruben_rada", "emo_sadness"]
+    ax.annotate("Ningún otro junta tanta\nalegría y tanta tristeza", (x, y), xytext=(0, -22),
+                textcoords="offset points", ha="center", va="top", fontsize=9.5,
+                color=MUTED, linespacing=1.3)
+    fig.savefig(DEST / "04_amplitud.png", facecolor=SURFACE)
+    plt.close(fig)
+
+
 def main():
     DEST.mkdir(parents=True, exist_ok=True)
     d = pd.read_parquet(ROOT / "data/processed/canciones_scores.parquet")
@@ -205,6 +245,7 @@ def main():
     g1_distribucion(d)
     g2_arco(d)
     g3_alegria(d)
+    g4_amplitud(d)
     for f in sorted(DEST.glob("*.png")):
         print(f, f.stat().st_size // 1024, "KB")
 

@@ -21,4 +21,4 @@ Gracias Rada por tanta luz 🕯️
 #DataScience #NLP #Python #MúsicaUruguaya #Rada #Candombe
 
 ---
-*Adjuntar: 01_tono.png, 02_arco.png, 03_alegria.png (en esta misma carpeta).*
+*Adjuntar: 01_tono.png, 02_arco.png, 03_alegria.png, 04_amplitud.png (en esta misma carpeta).*
