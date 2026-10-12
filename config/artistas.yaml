@@ -1,0 +1,79 @@
+# Set de artistas del estudio.
+# genius_id y conteos verificados via API de Genius el 28/8/2026
+# (canciones = listadas como artista principal; con_letra = lyrics_state == "complete").
+# mbid (MusicBrainz) se completa en la Fase 1.
+
+sujeto:
+  ruben_rada:
+    nombre: "Rubén Rada"
+    genius_id: 390523
+    genius_canciones: 139
+    genius_con_letra: 95
+    mbid: "5b032b22-6131-44c8-bccc-aae7006eec3a"  # verificado; en MB faltan Adar Nebur (1984) y Gamurgatrónica (2025)
+    discogs_id: 329162
+    actividad: [1965, 2025]
+    # Época 1 (El Kinto / Tótem) vive bajo fichas de banda, no bajo la solista.
+    # Regla METODO.md: si tras la Fase 3 la época 1 queda con <10 canciones con
+    # letra y autoría propia, se fusiona con la solista temprana.
+    fichas_adicionales:
+      el_kinto: { genius_id: 1669718, mbid: "3288c6e1-f68d-4df6-b198-08a3f2195dc7" }   # mbid: completar en Fase 1
+      totem: { genius_id: 2278325, mbid: "f35c7c24-7a2e-453b-969b-d73d1d4b88f0" }      # "Totem Uruguay" en Genius; mbid: completar en Fase 1
+      opa: { genius_id: null, mbid: "295f672b-8eab-47a2-82d3-d2836079299f" }           # no existe en Genius; subcorpus excluido (inglés/instrumental)
+    epocas:
+      - { nombre: "El Kinto / Tótem", desde: 1967, hasta: 1973 }
+      - { nombre: "Solista 70s-80s", desde: 1974, hasta: 1992 }
+      - { nombre: "Retorno", desde: 1993, hasta: 2002 }
+      - { nombre: "Tardía", desde: 2006, hasta: 2025 }
+
+set_principal:
+  jaime_roos:
+    nombre: "Jaime Roos"
+    genius_id: 361422
+    genius_canciones: 99
+    genius_con_letra: 98
+    mbid: "df519476-a287-4aa0-bc86-1098b9de0d20"
+    actividad: [1977, 2025]
+    # Coautorías conocidas con Raúl Castro (flag en creditos.csv, Fase 3)
+  alfredo_zitarrosa:
+    nombre: "Alfredo Zitarrosa"
+    genius_id: 350111
+    genius_canciones: 105
+    genius_con_letra: 105
+    mbid: "ecc5f6c1-9553-4a3d-bf39-fb805f695d6d"
+    actividad: [1965, 1989]
+    # Fallback de letras: letras.com (buena cobertura verificada)
+  fernando_cabrera:
+    nombre: "Fernando Cabrera"
+    genius_id: 530403
+    genius_canciones: 203
+    genius_con_letra: 202
+    mbid: "0ab50f00-5c3f-4061-8b2d-f8d01f4c49d3"
+    actividad: [1980, 2025]
+  eduardo_mateo:
+    nombre: "Eduardo Mateo"
+    genius_id: 373429
+    genius_canciones: 127
+    genius_con_letra: 126
+    mbid: "359b7ce1-2a0a-4411-a4ef-19fe125e6c0a"
+    actividad: [1967, 1990]
+    # Control ideal: mismo origen que Rada (El Kinto, candombe beat), estética opuesta.
+    # Transcripciones online de calidad dudosa: revisar en limpieza.
+  jorge_drexler:
+    nombre: "Jorge Drexler"
+    genius_id: 344463
+    genius_canciones: 311
+    genius_con_letra: 295
+    mbid: "abb91078-f7db-41f2-8f07-7f37bb739143"
+    actividad: [1992, 2025]
+
+# Fuera del análisis de autoría: musicalizan/cantan mayormente textos de otros
+# (Washington Benavides y otros poetas). Solo subanálisis de repertorio, si se hace.
+subanalisis_repertorio:
+  daniel_viglietti:
+    nombre: "Daniel Viglietti"
+    genius_id: 319944
+    genius_con_letra: 108
+  eduardo_darnauchans:
+    nombre: "Eduardo Darnauchans"
+    genius_id: 1599417
+    genius_con_letra: 128

@@ -1,0 +1,131 @@
+[excluido] ruben_rada: 'Varsovia' (2007-11-13) Album/Live
+[excluido] ruben_rada: 'La cosa se pone negra' (1983) Album/Live
+[excluido] ruben_rada: 'El álbum negro' (2011) Album/Compilation
+[excluido] ruben_rada: 'Concierto por la vida' (2023-02-17) Album/Live
+[FALLA] jaime_roos: MusicBrainz siguió devolviendo 503 en artist
+[FALLA] alfredo_zitarrosa: MusicBrainz siguió devolviendo 503 en artist
+[FALLA] fernando_cabrera: MusicBrainz siguió devolviendo 503 en artist
+[FALLA] eduardo_mateo: MusicBrainz siguió devolviendo 503 en artist
+[FALLA] jorge_drexler: MusicBrainz siguió devolviendo 503 en artist
+[FALLA] el_kinto: MusicBrainz siguió devolviendo 503 en artist
+[mbid] Tótem -> f35c7c24-7a2e-453b-969b-d73d1d4b88f0 (score 100, UY/Montevideo, 'Uruguayan rock band')
+[mbid] Opa -> 295f672b-8eab-47a2-82d3-d2836079299f (score 99, UY/, 'fusion band from Uruguay')
+[excluido] opa: 'En Vivo 87' & Rarities...' (2001) Album/Compilation+Live
+[sin tracklist] opa: 'Magic Time' (1977) rg=7775e9c9-9167-4837-8c77-2049ed2f0f14
+mbids: ruben_rada=5b032b22-6131-44c8-bccc-aae7006eec3a, jaime_roos=None, alfredo_zitarrosa=None, fernando_cabrera=None, eduardo_mateo=None, jorge_drexler=None, el_kinto=None, totem=f35c7c24-7a2e-453b-969b-d73d1d4b88f0, opa=295f672b-8eab-47a2-82d3-d2836079299f
+[excluido] ruben_rada: 'Varsovia' (2007-11-13) Album/Live
+[excluido] ruben_rada: 'La cosa se pone negra' (1983) Album/Live
+[excluido] ruben_rada: 'El álbum negro' (2011) Album/Compilation
+[excluido] ruben_rada: 'Concierto por la vida' (2023-02-17) Album/Live
+[mbid] Jaime Roos -> df519476-a287-4aa0-bc86-1098b9de0d20 (score 100, UY/Montevideo, '')
+[excluido] jaime_roos: 'En vivo en el Río de la Plata' (2014) Album/Live
+[excluido] jaime_roos: 'Clásico. Todos sus hits' (2007) Album/Compilation
+[excluido] jaime_roos: 'Repertorio' (1994) Album/Compilation
+[excluido] jaime_roos: 'Candombe, murga y rocanrol' () Album/Live
+[excluido] jaime_roos: 'Concierto aniversario' () Album/Live
+[excluido] jaime_roos: 'Cine Metropol' (2013) Album/Compilation
+[excluido] jaime_roos: 'Mostrador' (1989) Album/Compilation
+[excluido] jaime_roos: 'Esta noche' (1989) Album/Live
+[excluido] jaime_roos: 'Te hizo vivir' (1998) Album/Compilation
+[FALLA] alfredo_zitarrosa: MusicBrainz siguió devolviendo 503 en artist
+[FALLA] fernando_cabrera: MusicBrainz siguió devolviendo 503 en artist
+[mbid] Eduardo Mateo -> 359b7ce1-2a0a-4411-a4ef-19fe125e6c0a (score 100, UY/Montevideo, '')
+[excluido] eduardo_mateo: 'Mateo clásico, volumen 2' (1995) Album/Compilation
+[excluido] eduardo_mateo: 'Mateo clásico, volumen 1' (1994) Album/Compilation
+[sin tracklist] eduardo_mateo: 'Cuerpo y alma' (1984) rg=a6177767-8cf9-41be-92b3-b0fa3be4846a
+[sin tracklist] eduardo_mateo: 'La máquina del tiempo / La mosca' (1990) rg=2823bec1-7aec-4262-bc7c-a62aece95b5c
+[sin tracklist] eduardo_mateo: 'La Máquina del Tiempo presenta a: Mateo / Mal tiempo sobre Alchemia (1er. viaje)' (1999) rg=48d894f8-faca-4c86-a4b2-306efcaa7afe
+[sin tracklist] eduardo_mateo: 'Mateo & Cabrera' (2000-10) rg=29421cb6-566f-48d5-86d4-534b8c71c69e
+[FALLA] eduardo_mateo: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+[FALLA] jorge_drexler: ('Connection aborted.', ConnectionResetError(54, 'Connection reset by peer'))
+[mbid] El Kinto -> 3288c6e1-f68d-4df6-b198-08a3f2195dc7 (score 100, UY/, '')
+[excluido] el_kinto: 'El Kinto' (2006) Album/Compilation
+[excluido] el_kinto: 'Clásico' (1998) Album/Compilation
+[mbid] Tótem -> f35c7c24-7a2e-453b-969b-d73d1d4b88f0 (score 100, UY/Montevideo, 'Uruguayan rock band')
+[mbid] Opa -> 295f672b-8eab-47a2-82d3-d2836079299f (score 99, UY/, 'fusion band from Uruguay')
+[excluido] opa: 'En Vivo 87' & Rarities...' (2001) Album/Compilation+Live
+[sin tracklist] opa: 'Magic Time' (1977) rg=7775e9c9-9167-4837-8c77-2049ed2f0f14
+mbids: ruben_rada=5b032b22-6131-44c8-bccc-aae7006eec3a, jaime_roos=df519476-a287-4aa0-bc86-1098b9de0d20, alfredo_zitarrosa=None, fernando_cabrera=None, eduardo_mateo=359b7ce1-2a0a-4411-a4ef-19fe125e6c0a, jorge_drexler=None, el_kinto=3288c6e1-f68d-4df6-b198-08a3f2195dc7, totem=f35c7c24-7a2e-453b-969b-d73d1d4b88f0, opa=295f672b-8eab-47a2-82d3-d2836079299f
+[excluido] ruben_rada: 'Varsovia' (2007-11-13) Album/Live
+[excluido] ruben_rada: 'La cosa se pone negra' (1983) Album/Live
+[excluido] ruben_rada: 'El álbum negro' (2011) Album/Compilation
+[excluido] ruben_rada: 'Concierto por la vida' (2023-02-17) Album/Live
+[excluido] jaime_roos: 'En vivo en el Río de la Plata' (2014) Album/Live
+[excluido] jaime_roos: 'Clásico. Todos sus hits' (2007) Album/Compilation
+[excluido] jaime_roos: 'Repertorio' (1994) Album/Compilation
+[excluido] jaime_roos: 'Candombe, murga y rocanrol' () Album/Live
+[excluido] jaime_roos: 'Concierto aniversario' () Album/Live
+[excluido] jaime_roos: 'Cine Metropol' (2013) Album/Compilation
+[excluido] jaime_roos: 'Mostrador' (1989) Album/Compilation
+[excluido] jaime_roos: 'Esta noche' (1989) Album/Live
+[excluido] jaime_roos: 'Te hizo vivir' (1998) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Frente A Frente' (1996) Album/Compilation
+[excluido] alfredo_zitarrosa: 'La ley es tela de araña - Melodia larga' (1997) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Los Archivos Inéditos De Alfredo Zitarrosa' (1998) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Antología 1 (1936-1989)' (1996-04-17) Album/Compilation
+[excluido] alfredo_zitarrosa: '20 grandes éxitos' (1986) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Alfredo Zitarrosa' (1999) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Antología 3 (1936-1989)' (1996-04-17) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Los Archivos Inéditos De Alfredo Zitarrosa Vol. 5' (1998) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Inédito 1' (1999) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Antología 2 (1936-1989)' (1996) Album/Compilation
+[excluido] alfredo_zitarrosa: '14 temas inéditos' (1997) Album/Compilation
+[FALLA] alfredo_zitarrosa: 500 Server Error: Internal Server Error for url: https://musicbrainz.org/ws/2/release?release-group=68b34b1f-e89b-4fbe-94d8-e8ffc9435806&inc=recordings%2Bmedia&status=official&limit=100&fmt=json
+[FALLA] fernando_cabrera: 500 Server Error: Internal Server Error for url: https://musicbrainz.org/ws/2/release-group?artist=0ab50f00-5c3f-4061-8b2d-f8d01f4c49d3&type=album&limit=100&offset=0&fmt=json
+[excluido] eduardo_mateo: 'Mateo clásico, volumen 2' (1995) Album/Compilation
+[excluido] eduardo_mateo: 'Mateo clásico, volumen 1' (1994) Album/Compilation
+[sin tracklist] eduardo_mateo: 'Cuerpo y alma' (1984) rg=a6177767-8cf9-41be-92b3-b0fa3be4846a
+[sin tracklist] eduardo_mateo: 'La máquina del tiempo / La mosca' (1990) rg=2823bec1-7aec-4262-bc7c-a62aece95b5c
+[sin tracklist] eduardo_mateo: 'La Máquina del Tiempo presenta a: Mateo / Mal tiempo sobre Alchemia (1er. viaje)' (1999) rg=48d894f8-faca-4c86-a4b2-306efcaa7afe
+[sin tracklist] eduardo_mateo: 'Mateo & Cabrera' (2000-10) rg=29421cb6-566f-48d5-86d4-534b8c71c69e
+[excluido] jorge_drexler: 'Primeras grabaciones: 1992-1994 (La luz que sabe robar + Radar)' (2005-10-12) Album/Compilation
+[excluido] jorge_drexler: 'Cara B' (2008-04-01) Album/Live
+[excluido] jorge_drexler: '30 Años' (2021-12-17) Album/Compilation
+[excluido] jorge_drexler: 'La edad del cielo: Sus grandes canciones' (2004-03-08) Album/Compilation
+[FALLA] jorge_drexler: 500 Server Error: Internal Server Error for url: https://musicbrainz.org/ws/2/release?release-group=92a52b9a-855e-364d-a552-ecf29a5a4200&inc=recordings%2Bmedia&status=official&limit=100&fmt=json
+[excluido] el_kinto: 'El Kinto' (2006) Album/Compilation
+[excluido] el_kinto: 'Clásico' (1998) Album/Compilation
+[excluido] opa: 'En Vivo 87' & Rarities...' (2001) Album/Compilation+Live
+[sin tracklist] opa: 'Magic Time' (1977) rg=7775e9c9-9167-4837-8c77-2049ed2f0f14
+mbids: ruben_rada=5b032b22-6131-44c8-bccc-aae7006eec3a, jaime_roos=df519476-a287-4aa0-bc86-1098b9de0d20, alfredo_zitarrosa=ecc5f6c1-9553-4a3d-bf39-fb805f695d6d, fernando_cabrera=0ab50f00-5c3f-4061-8b2d-f8d01f4c49d3, eduardo_mateo=359b7ce1-2a0a-4411-a4ef-19fe125e6c0a, jorge_drexler=abb91078-f7db-41f2-8f07-7f37bb739143, el_kinto=3288c6e1-f68d-4df6-b198-08a3f2195dc7, totem=f35c7c24-7a2e-453b-969b-d73d1d4b88f0, opa=295f672b-8eab-47a2-82d3-d2836079299f
+[excluido] ruben_rada: 'Varsovia' (2007-11-13) Album/Live
+[excluido] ruben_rada: 'La cosa se pone negra' (1983) Album/Live
+[excluido] ruben_rada: 'El álbum negro' (2011) Album/Compilation
+[excluido] ruben_rada: 'Concierto por la vida' (2023-02-17) Album/Live
+[excluido] jaime_roos: 'En vivo en el Río de la Plata' (2014) Album/Live
+[excluido] jaime_roos: 'Clásico. Todos sus hits' (2007) Album/Compilation
+[excluido] jaime_roos: 'Repertorio' (1994) Album/Compilation
+[excluido] jaime_roos: 'Candombe, murga y rocanrol' () Album/Live
+[excluido] jaime_roos: 'Concierto aniversario' () Album/Live
+[excluido] jaime_roos: 'Cine Metropol' (2013) Album/Compilation
+[excluido] jaime_roos: 'Mostrador' (1989) Album/Compilation
+[excluido] jaime_roos: 'Esta noche' (1989) Album/Live
+[excluido] jaime_roos: 'Te hizo vivir' (1998) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Frente A Frente' (1996) Album/Compilation
+[excluido] alfredo_zitarrosa: 'La ley es tela de araña - Melodia larga' (1997) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Los Archivos Inéditos De Alfredo Zitarrosa' (1998) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Antología 1 (1936-1989)' (1996-04-17) Album/Compilation
+[excluido] alfredo_zitarrosa: '20 grandes éxitos' (1986) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Alfredo Zitarrosa' (1999) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Antología 3 (1936-1989)' (1996-04-17) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Los Archivos Inéditos De Alfredo Zitarrosa Vol. 5' (1998) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Inédito 1' (1999) Album/Compilation
+[excluido] alfredo_zitarrosa: 'Antología 2 (1936-1989)' (1996) Album/Compilation
+[excluido] alfredo_zitarrosa: '14 temas inéditos' (1997) Album/Compilation
+[excluido] fernando_cabrera: 'ZERO PARADES: For Dead Spies (Original Game Soundtrack)' (2026-05-21) Album/Soundtrack
+[sin tracklist] fernando_cabrera: 'Mateo & Cabrera' (2000-10) rg=29421cb6-566f-48d5-86d4-534b8c71c69e
+[excluido] eduardo_mateo: 'Mateo clásico, volumen 2' (1995) Album/Compilation
+[excluido] eduardo_mateo: 'Mateo clásico, volumen 1' (1994) Album/Compilation
+[sin tracklist] eduardo_mateo: 'Cuerpo y alma' (1984) rg=a6177767-8cf9-41be-92b3-b0fa3be4846a
+[sin tracklist] eduardo_mateo: 'La máquina del tiempo / La mosca' (1990) rg=2823bec1-7aec-4262-bc7c-a62aece95b5c
+[sin tracklist] eduardo_mateo: 'La Máquina del Tiempo presenta a: Mateo / Mal tiempo sobre Alchemia (1er. viaje)' (1999) rg=48d894f8-faca-4c86-a4b2-306efcaa7afe
+[sin tracklist] eduardo_mateo: 'Mateo & Cabrera' (2000-10) rg=29421cb6-566f-48d5-86d4-534b8c71c69e
+[excluido] jorge_drexler: 'Primeras grabaciones: 1992-1994 (La luz que sabe robar + Radar)' (2005-10-12) Album/Compilation
+[excluido] jorge_drexler: 'Cara B' (2008-04-01) Album/Live
+[excluido] jorge_drexler: '30 Años' (2021-12-17) Album/Compilation
+[excluido] jorge_drexler: 'La edad del cielo: Sus grandes canciones' (2004-03-08) Album/Compilation
+[excluido] el_kinto: 'El Kinto' (2006) Album/Compilation
+[excluido] el_kinto: 'Clásico' (1998) Album/Compilation
+[excluido] opa: 'En Vivo 87' & Rarities...' (2001) Album/Compilation+Live
+[sin tracklist] opa: 'Magic Time' (1977) rg=7775e9c9-9167-4837-8c77-2049ed2f0f14
+mbids: ruben_rada=5b032b22-6131-44c8-bccc-aae7006eec3a, jaime_roos=df519476-a287-4aa0-bc86-1098b9de0d20, alfredo_zitarrosa=ecc5f6c1-9553-4a3d-bf39-fb805f695d6d, fernando_cabrera=0ab50f00-5c3f-4061-8b2d-f8d01f4c49d3, eduardo_mateo=359b7ce1-2a0a-4411-a4ef-19fe125e6c0a, jorge_drexler=abb91078-f7db-41f2-8f07-7f37bb739143, el_kinto=3288c6e1-f68d-4df6-b198-08a3f2195dc7, totem=f35c7c24-7a2e-453b-969b-d73d1d4b88f0, opa=295f672b-8eab-47a2-82d3-d2836079299f

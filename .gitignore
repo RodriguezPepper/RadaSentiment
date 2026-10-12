@@ -1,0 +1,13 @@
+# Entorno
+.venv/
+__pycache__/
+*.pyc
+.ipynb_checkpoints/
+.env
+models_cache/
+.DS_Store
+
+# Letras y derivados con texto (copyright — nunca al repo público)
+data/raw/
+data/processed/
+data/lexicons/
