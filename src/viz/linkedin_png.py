@@ -1,7 +1,11 @@
-"""Gráficas estáticas para LinkedIn (PNG 1080×1080 aprox, 200 dpi).
+"""Gráficas estáticas para LinkedIn y el README (PNG 1080×1080).
 
-Tres piezas: distribución de tono por artista, arco temporal de Rada
-(énfasis: Rada en color, el resto en gris), y proporción de alegría.
+Tres piezas con el mismo sistema visual: Rada en azul, los otros cinco en
+gris, para que en las tres se lea la misma historia.
+
+  01_tono.png     distribución del tono por canción, artista por artista
+  02_arco.png     tono mediano de Rada por década contra el resto
+  03_alegria.png  proporción de estrofas cuya emoción dominante es alegría
 
 Salida: informe/linkedin/0{1,2,3}_*.png
 Uso:    .venv/bin/python src/viz/linkedin_png.py
@@ -15,6 +19,7 @@ matplotlib.use("Agg")
 import matplotlib.pyplot as plt
 import numpy as np
 import pandas as pd
+from matplotlib.patches import FancyBboxPatch
 
 ROOT = Path(__file__).resolve().parents[2]
 DEST = ROOT / "informe/linkedin"
@@ -24,106 +29,172 @@ NOMBRES = {"ruben_rada": "Rubén Rada", "eduardo_mateo": "Eduardo Mateo",
            "fernando_cabrera": "Fernando Cabrera", "alfredo_zitarrosa": "Alfredo Zitarrosa"}
 ORDEN = ["ruben_rada", "eduardo_mateo", "jorge_drexler",
          "jaime_roos", "fernando_cabrera", "alfredo_zitarrosa"]
-COLOR = {"ruben_rada": "#2a78d6", "eduardo_mateo": "#eb6834",
-         "jorge_drexler": "#1baf7a", "jaime_roos": "#eda100",
-         "fernando_cabrera": "#e87ba4", "alfredo_zitarrosa": "#008300"}
-SURFACE, INK, INK2, MUTED, GRID, BASE = "#fcfcfb", "#0b0b0b", "#52514e", "#898781", "#e1e0d9", "#c3c2b7"
-GRIS = "#c3c2b7"
+
+SURFACE = "#fcfcfb"
+INK, INK2, MUTED = "#0b0b0b", "#52514e", "#898781"
+GRID, BASE = "#e1e0d9", "#c3c2b7"
+RADA = "#e34948"
+OTROS = "#cfcec6"
+
+LADO, DPI = 6.0, 180  # 1080 px
+PIE = "607 canciones · tono por estrofa con RoBERTuito · github.com/RodriguezPepper/RadaSentiment"
 
 plt.rcParams.update({
-    "font.family": ["Helvetica Neue", "Arial", "DejaVu Sans"],
+    "font.family": ["Helvetica Neue", "Helvetica", "Arial", "DejaVu Sans"],
     "figure.facecolor": SURFACE, "axes.facecolor": SURFACE,
-    "axes.edgecolor": BASE, "axes.linewidth": 0.8,
+    "axes.edgecolor": BASE, "axes.linewidth": 1,
     "xtick.color": MUTED, "ytick.color": INK2,
-    "axes.grid": False, "svg.fonttype": "none",
+    "xtick.major.size": 0, "ytick.major.size": 0,
+    "xtick.major.pad": 8, "ytick.major.pad": 10,
+    "axes.grid": False, "axes.axisbelow": True,
+    "axes.formatter.use_locale": False,
 })
 
-PIE = "análisis propio · 607 canciones (1966–2024) · clasificación por estrofa con RoBERTuito"
+
+def coma(x, dec=2, signo=True):
+    """Formato rioplatense: coma decimal y signo menos tipográfico."""
+    s = f"{x:+.{dec}f}" if signo else f"{x:.{dec}f}"
+    return s.replace("-", "−").replace(".", ",")
 
 
-def marco(fig, titulo, subtitulo):
+def lienzo(titulo, subtitulo, ax_rect):
+    fig = plt.figure(figsize=(LADO, LADO), dpi=DPI)
+    x0 = 0.075
+    fig.text(x0, 0.935, titulo, fontsize=19, fontweight="bold", color=INK,
+             va="top", linespacing=1.15)
     lineas = titulo.count("\n") + 1
-    fig.text(0.06, 0.97, titulo, fontsize=17, fontweight="bold", color=INK,
-             va="top", linespacing=1.3)
-    y_sub = 0.97 - 0.062 * lineas
-    fig.text(0.06, y_sub, subtitulo, fontsize=11.5, color=INK2, va="top")
-    fig.subplots_adjust(top=y_sub - 0.09)
-    fig.text(0.06, 0.022, PIE, fontsize=8.5, color=MUTED)
+    fig.text(x0, 0.935 - 0.052 * lineas - 0.018, subtitulo, fontsize=11.5,
+             color=INK2, va="top", linespacing=1.35)
+    fig.add_artist(plt.Line2D([x0, 1 - x0], [0.062, 0.062], color=GRID, lw=0.8))
+    fig.text(x0, 0.036, PIE, fontsize=7.6, color=MUTED, va="center")
+    ax = fig.add_axes(ax_rect)
+    for s in ax.spines.values():
+        s.set_visible(False)
+    return fig, ax
 
 
 def g1_distribucion(d):
-    fig, ax = plt.subplots(figsize=(5.4, 5.4), dpi=200)
-    fig.subplots_adjust(top=0.78, bottom=0.13, left=0.30, right=0.94)
+    fig, ax = lienzo("¿Quién escribe las letras más\nluminosas del cancionero uruguayo?",
+                     "Cada punto es una canción; la marca oscura es la mediana\nde cada artista.",
+                     [0.29, 0.17, 0.56, 0.54])
     rng = np.random.default_rng(7)
-    for i, f in enumerate(reversed(ORDEN)):
+    n = len(ORDEN)
+    for i, f in enumerate(ORDEN):
+        y0 = n - 1 - i
         g = d[d.ficha == f]
-        y = i + rng.uniform(-0.2, 0.2, len(g))
-        ax.scatter(g.valencia, y, s=14, color=COLOR[f], alpha=0.45, lw=0)
+        es_rada = f == "ruben_rada"
+        y = y0 + rng.uniform(-0.22, 0.22, len(g))
+        ax.scatter(g.valencia, y, s=17, color=RADA if es_rada else OTROS,
+                   alpha=0.75 if es_rada else 0.9, lw=0, zorder=2)
         med = g.valencia.median()
-        ax.plot([med, med], [i - 0.3, i + 0.3], color=INK, lw=2.6, solid_capstyle="round")
-    ax.axvline(0, color=GRID, lw=1, zorder=0)
-    ax.set_yticks(range(len(ORDEN)))
-    ax.set_yticklabels([NOMBRES[f] for f in reversed(ORDEN)], fontsize=11)
-    ax.set_xlim(-1.05, 1.05)
-    ax.set_xlabel("tono emocional de la letra  (− sombrío · + luminoso)",
-                  fontsize=10, color=MUTED)
-    for s in ("top", "right", "left"):
-        ax.spines[s].set_visible(False)
-    marco(fig, "¿Quién escribe las letras más\nluminosas del cancionero uruguayo?",
-          "cada punto es una canción · la barra negra es la mediana")
-    fig.savefig(DEST / "01_tono.png")
+        ax.plot([med, med], [y0 - 0.34, y0 + 0.34], color=INK, lw=2.4,
+                solid_capstyle="round", zorder=4)
+        ax.text(1.12, y0, coma(med), ha="left", va="center", fontsize=10.5,
+                color=INK if es_rada else INK2,
+                fontweight="bold" if es_rada else "normal")
+    ax.text(1.12, n - 0.35, "mediana", ha="left", va="bottom", fontsize=8.5, color=MUTED)
+    ax.axvline(0, color=BASE, lw=1, zorder=1)
+    ax.set_yticks(range(n))
+    ax.set_yticklabels([NOMBRES[f] for f in reversed(ORDEN)], fontsize=11.5)
+    ax.get_yticklabels()[-1].set_fontweight("bold")
+    ax.get_yticklabels()[-1].set_color(INK)
+    ax.set_xlim(-1.02, 1.02)
+    ax.set_ylim(-0.6, n - 0.4)
+    ax.set_xticks([-1, -0.5, 0, 0.5, 1])
+    ax.set_xticklabels(["−1", "−0,5", "0", "+0,5", "+1"], fontsize=9.5)
+    ax.text(-1.02, -1.25, "← más sombrío", ha="left", va="top", fontsize=9.5, color=INK2,
+            transform=ax.transData)
+    ax.text(1.02, -1.25, "más luminoso →", ha="right", va="top", fontsize=9.5, color=INK2,
+            transform=ax.transData)
+    fig.savefig(DEST / "01_tono.png", facecolor=SURFACE)
     plt.close(fig)
 
 
 def g2_arco(d):
-    fig, ax = plt.subplots(figsize=(5.4, 5.4), dpi=200)
-    fig.subplots_adjust(top=0.78, bottom=0.13, left=0.13, right=0.90)
-    for f in ORDEN:
+    fig, ax = lienzo("Del Rada sombrío de los 70\nal luminoso de los 2010",
+                     "Tono mediano de sus letras por década. En gris, los otros\ncinco cantautores.",
+                     [0.135, 0.15, 0.76, 0.55])
+    for f in ORDEN[1:]:
         g = d[d.ficha == f].dropna(subset=["decada"])
         if f == "eduardo_mateo":
             g = g[g.decada <= 1990]
         cel = g.groupby("decada").valencia.agg(["median", "size"])
         cel = cel[cel["size"] >= 5]
-        if f == "ruben_rada":
-            ax.plot(cel.index, cel["median"], color=COLOR[f], lw=3, zorder=5,
-                    marker="o", ms=7, mec=SURFACE, mew=1.2)
-            ax.annotate("Rada", (cel.index[-1], cel["median"].iloc[-1]),
-                        xytext=(8, 4), textcoords="offset points",
-                        color=COLOR[f], fontsize=12, fontweight="bold")
-        else:
-            ax.plot(cel.index, cel["median"], color=GRIS, lw=1.4, zorder=2)
-    ax.axhline(0, color=BASE, lw=1, zorder=0)
+        ax.plot(cel.index, cel["median"], color=OTROS, lw=1.6, zorder=2,
+                solid_capstyle="round", solid_joinstyle="round")
+
+    g = d[d.ficha == "ruben_rada"].dropna(subset=["decada"])
+    cel = g.groupby("decada").valencia.agg(["median", "size"])
+    cel = cel[cel["size"] >= 5]["median"]
+    ax.plot(cel.index, cel.values, color=RADA, lw=3, zorder=5,
+            solid_capstyle="round", solid_joinstyle="round")
+    ax.scatter(cel.index, cel.values, s=70, color=RADA, edgecolor=SURFACE,
+               linewidth=2, zorder=6)
+
+    notas = {1970: ("los 70", (-12, 0)), 1990: ("el regreso", (0, 16)),
+             2010: ("los 2010", (0, 16))}
+    for dec, (txt, off) in notas.items():
+        v = cel[dec]
+        ax.annotate(f"{txt}\n{coma(v)}", (dec, v), xytext=off, textcoords="offset points",
+                    ha="right" if off[0] < 0 else "center",
+                    va="center" if off[1] == 0 else "bottom", fontsize=10,
+                    color=INK, linespacing=1.25,
+                    fontweight="bold" if dec != 1990 else "normal")
+    ax.annotate("Rada", (cel.index[-1], cel.values[-1]), xytext=(10, 0),
+                textcoords="offset points", va="center", fontsize=11,
+                fontweight="bold", color=INK)
+
+    for y in (-0.4, -0.2, 0.2, 0.4):
+        ax.axhline(y, color=GRID, lw=0.8, zorder=0)
+    ax.axhline(0, color=BASE, lw=1.2, zorder=1)
+    ax.set_ylim(-0.48, 0.48)
+    ax.set_yticks([-0.4, -0.2, 0, 0.2, 0.4])
+    ax.set_yticklabels(["−0,4", "−0,2", "0", "+0,2", "+0,4"], fontsize=9.5, color=MUTED)
+    ax.set_xlim(1955, 2027)
     ax.set_xticks([1960, 1970, 1980, 1990, 2000, 2010, 2020])
     ax.set_xticklabels(["'60", "'70", "'80", "'90", "'00", "'10", "'20"], fontsize=10)
-    ax.set_ylabel("tono emocional mediano", fontsize=10, color=MUTED)
-    for s in ("top", "right"):
-        ax.spines[s].set_visible(False)
-    marco(fig, "El arco de Rada:\ncada década más luminoso",
-          "de −0.21 en los 70 a +0.32 en los 2010s · en gris, los otros cinco")
-    fig.savefig(DEST / "02_arco.png")
+    fig.savefig(DEST / "02_arco.png", facecolor=SURFACE)
     plt.close(fig)
 
 
+def barra(ax, y, v, alto, color, r_px=5):
+    """Barra horizontal con la punta redondeada y la base recta."""
+    fig = ax.figure
+    fig.canvas.draw()
+    bb = ax.get_window_extent()
+    x0, x1 = ax.get_xlim()
+    y0, y1 = ax.get_ylim()
+    dx = (x1 - x0) / bb.width
+    dy = (y1 - y0) / bb.height
+    r = r_px * dx
+    # se dibuja empezando en -r para que el redondeo izquierdo quede recortado por el eje
+    p = FancyBboxPatch((-r, y - alto / 2), v + r, alto,
+                       boxstyle=f"round,pad=0,rounding_size={r}",
+                       mutation_aspect=dy / dx, lw=0, color=color, zorder=3)
+    ax.add_patch(p)
+
+
 def g3_alegria(d):
-    fig, ax = plt.subplots(figsize=(5.4, 5.4), dpi=200)
-    fig.subplots_adjust(top=0.78, bottom=0.10, left=0.30, right=0.90)
+    fig, ax = lienzo("Casi cinco veces más alegría\nque Zitarrosa",
+                     "Porcentaje de estrofas cuya emoción dominante es la alegría.",
+                     [0.29, 0.15, 0.58, 0.58])
     vals = [(f, d[d.ficha == f].emo_joy.mean() * 100) for f in ORDEN]
     vals.sort(key=lambda x: x[1])
+    ax.set_xlim(0, 20)
+    ax.set_ylim(-0.6, len(vals) - 0.4)
     for i, (f, v) in enumerate(vals):
-        color = COLOR["ruben_rada"] if f == "ruben_rada" else GRIS
-        ax.barh(i, v, height=0.55, color=color)
-        ax.text(v + 0.4, i, f"{v:.1f}%", va="center", fontsize=11,
-                color=INK if f == "ruben_rada" else INK2,
-                fontweight="bold" if f == "ruben_rada" else "normal")
+        es_rada = f == "ruben_rada"
+        barra(ax, i, v, 0.42, RADA if es_rada else OTROS)
+        ax.text(v + 0.45, i, f"{coma(v, 1, signo=False)} %", va="center", fontsize=11.5,
+                color=INK if es_rada else INK2,
+                fontweight="bold" if es_rada else "normal")
+    ax.axvline(0, color=BASE, lw=1.2, zorder=4)
     ax.set_yticks(range(len(vals)))
-    ax.set_yticklabels([NOMBRES[f] for f, _ in vals], fontsize=11)
-    ax.set_xlim(0, 21)
+    ax.set_yticklabels([NOMBRES[f] for f, _ in vals], fontsize=11.5)
+    ax.get_yticklabels()[-1].set_fontweight("bold")
+    ax.get_yticklabels()[-1].set_color(INK)
     ax.set_xticks([])
-    for s in ("top", "right", "bottom"):
-        ax.spines[s].set_visible(False)
-    marco(fig, "Cinco veces más alegría\nque Zitarrosa",
-          "% de estrofas cuya emoción dominante es alegría")
-    fig.savefig(DEST / "03_alegria.png")
+    fig.savefig(DEST / "03_alegria.png", facecolor=SURFACE)
     plt.close(fig)
 
 
